@@ -4,13 +4,12 @@ class TestModel(models.Model):
     _name = 'hostel.register'
     _description = "Hostel Registration"
 
-    name = fields.Char('Name',required= True)
-    description = fields.Text()
-    password = fields.Char()
-    postcode = fields.Char()
-    date_availability : fields.Date()
-    selling_price = fields.Float(required= True)
-    room_sharing = fields.Integer()
-    living_area = fields.Integer()
-    garden = fields.Boolean()
-    garden_area = fields.Integer()
+    name = fields.Char (string = 'First Name', required = True) 
+    last_name = fields.Char (string = 'Last Name', required = True)
+    email= fields.Char (string = 'Email Address',required = True)
+    permanent_address = fields.Char (string = 'Permanent Address')
+    date_of_birth = fields.Date (string = 'Date Of Birth')
+    city = fields.Char (string = 'City')
+    permanent_address = fields.Char (string = 'Permanent Address',required = True)
+    date_of_birth = fields.Date (string = 'Date Of Birth',required = True)
+    city = fields.Char (string = 'City',required = True)
