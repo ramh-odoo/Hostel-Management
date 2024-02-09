@@ -1,6 +1,7 @@
+#-*- coding: utf-8 -*-
 from odoo import models, fields
 
-class TestModel(models.Model):
+class StudentRegister(models.Model):
     _name = 'hostel.register'
     _description = "Hostel Registration"
 
