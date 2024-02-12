@@ -8,14 +8,14 @@ class HostelRooms(models.Model):
 
     room_no = fields.Char(string="Room number")
     sequence_number = fields.Char(string = "id")
-    room_type = fields.Selection([('2share', '2 share'), ('3share', '3 share'), ('4share', '4 share')],string='Type of room',required=True)
+    room_type = fields.Selection([('2share','2 share'),('3share','3 share'),('4share','4 share')],string='Type of room',required=True)
     room_ac = fields.Boolean(string='Ac room', default=True)
     count = fields.Integer(string="Count of people")
-    bath_attached = fields.Boolean(string='Bathroom attached', default=True)
-    availability = fields.Booleqan(string='Room availability', default=True)
-    room_rate = fields.Float( string='Room Price', store=True)
-    mess_rate = fields.Float( string='Mess Price', store=True)
-    student_id = fields.Many2one('hostel.student')
+    bath_attached = fields.Boolean(string='Bathroom attached',default=True)
+    availability = fields.Boolean(string='Room availability',default=True)
+    room_rate = fields.Float( strinag='Mess Price',store=True)
+    mess_rate = fields.Float( string='Mess Price',store=True)
+    student_id = fields.Many2one('hostel.register')
 
     @api.onchange('room_type', 'count')
     def _check_count_with_room_type(self):
@@ -33,9 +33,3 @@ class HostelRooms(models.Model):
             existing_records = self.search([('room_no', '=', record.room_no)])
             if len(existing_records) > 1:
                 raise ValidationError('room number must be unique!')
-
-
-    @api.model
-    def create(self, vals):
-        vals['sequence_number'] = self.env['ir.sequence'].next_by_code('hostel.room')
-        return super(HostelRooms,self).create(vals)
