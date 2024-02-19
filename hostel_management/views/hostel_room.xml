@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id='action_hostel_room' model='ir.actions.act_window'>
+        <field name='name'>Room Mamagement</field>
+        <field name='res_model'>hostel.room</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+    <record id="view_hostel_room_form" model="ir.ui.view">
+        <field name="name">view.hostel.room.form</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="room_no"/>
+                            <field name="room_type"/>
+                            <field name="room_ac"/>
+                            <field name="count"/>
+                            <field name="bath_attached"/>
+                            <field name="availability"/>
+                        </group>
+                        <group>
+                            <field name="room_rate"/>
+                            <field name="mess_rate"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="status"/>
+                            <field name="student_ids" widget="many2many_tags" options="{'no_create': True}" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_hostel_room_tree" model="ir.ui.view">
+        <field name="name">ciew.hostel.room.tree</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="room_no"/>
+                <field name="room_type"/>
+                <field name="room_ac" />
+                <field name="count" optional='hide'/>
+                <field name="availability"/>
+                <field name="status" optional='hide'/>
+                <field name="student_ids" optional='hide' widget="many2many_tags" options="{'no_create': True}" />
+             </tree>
+        </field>
+    </record>
+    <record id='search_hostel_room' model='ir.ui.view'>
+        <field name='name'>hostel.room.search</field>
+        <field name='model'>hostel.room</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name="room_no"/>
+                <field name="room_type"/>
+                <field name="room_ac" />
+                <field name="count" optional='hide'/>
+                <field name="availability"/>
+                <field name="status" optional='hide'/>
+                <field name="student_ids" optional='hide' widget="many2many_tags" options="{'no_create': True}" />
+                <filter string="Available" name="availability" domain="[('availability', '=',True)]"/>
+                <filter string="Status" name='status' context="{'group_by':'status'}"/>
+                <filter string="Room AC" name='room_ac' context="{'group_by':'room_ac'}"/>
+                <filter string="Room Type" name='room_type' context="{'group_by':'room_type'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

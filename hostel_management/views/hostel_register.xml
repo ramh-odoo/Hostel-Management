@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id='action_hostel_register' model='ir.actions.act_window'>
+    <field name='name'>Students</field>
+    <field name='res_model'>hostel.register</field>
+    <field name='view_mode'>tree,form</field>
+</record>
+<record id='hostel_register_view_form' model='ir.ui.view'>
+    <field name='name'>hostel.register.view.form</field>
+    <field name='model'>hostel.register</field>
+    <field name='arch' type='xml'>
+        <form>
+            <div class='oe_title' col='1'>
+                <h1 class="mb-2">
+                    <field name="name"/>
+                </h1>
+            </div>
+            <group >
+                <group col='2'>
+                    <field name='email'/>
+                    <field name='contact'/>
+                </group>
+                <group col='2'>
+                    <field name="date_of_birth"/>
+                    <field name="gender"/>
+                </group>
+                <group>
+                </group>
+            </group>
+            <notebook>
+                <page string="Description">
+                    <group col="4">
+                        <field name="city"/>
+                        <field name='state'/>
+                        <field name="permanent_address" options="{'no_create': True, 'no_edit': True}"/>
+                        <field name="course"/>
+                        <field name="year"/>
+                        <field name="semester"/>
+                        <field name="status"/>
+                    </group>
+                </page>
+                <page string='Parent Details'>
+                    <group>
+                        <field name="mother_name"/>
+                        <field name='father_name'/>
+                        <field name='parent_contact'/>
+                    </group>
+                </page>
+            </notebook>
+        </form>
+    </field>
+</record>
+<record id='hostel_register_view_tree' model='ir.ui.view'>
+    <field name='name'>hostel.register.view.tree</field>
+    <field name='model'>hostel.register</field>
+    <field name='arch' type='xml'>
+        <tree>
+            <field name="name"/>
+            <field name='email'/>
+            <field name='contact' optional='show'/>
+            <field name="date_of_birth" optional='hide'/>
+            <field name="gender" optional='hide'/>
+            <field name="city" optional='hide'/>
+            <field name='state' optional='hide'/>
+            <field name="permanent_address" optional='hide'/>
+            <field name="course" optional='hide'/>
+            <field name="year" optional='hide'/>
+            <field name="semester" optional='hide'/>
+            <field name="status" optional='show'/>
+            <field name="mother_name" optional='hide'/>
+            <field name='father_name' optional='hide'/>
+            <field name='parent_contact' optional='hide'/>
+        </tree>
+    </field>
+</record>
+<record id='search_hostel_student' model='ir.ui.view'>
+    <field name='name'>hostel.register.search</field>
+    <field name='model'>hostel.register</field>
+    <field name='arch' type='xml'>
+        <search>
+            <field name="name"/>
+            <field name='email'/>
+            <field name='contact'/>
+            <field name="date_of_birth"/>
+            <field name="gender"/>
+            <field name="city"/>
+            <field name='state'/>
+            <field name="permanent_address"/>
+            <field name="course"/>
+            <field name="year"/>
+            <field name="semester"/>
+            <field name="status"/>
+            <field name="mother_name"/>
+            <field name='father_name'/>
+            <field name='parent_contact'/>
+            <filter name='status' context="{'group_by' : 'status'}"/>
+        </search>
+    </field>
+</record>
+</odoo>

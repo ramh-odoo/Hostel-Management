@@ -1,11 +1,12 @@
 #-*- coding: utf-8 -*-
-from odoo import models,fields
+from odoo import models,fields, api
 from odoo.exceptions import ValidationError
 
 class HostelRooms(models.Model):
     _name = "hostel.room"
     _description = "hostel.room"
     _rec_name = "room_no"
+    _default_view='view_hostel_room_form'
 
     room_no = fields.Char(string="Room number")
     sequence_number = fields.Char(string = "id")
@@ -14,15 +15,13 @@ class HostelRooms(models.Model):
     count = fields.Integer(string="Count of people")
     bath_attached = fields.Boolean(string="Bathroom attached",default=True)
     availability = fields.Boolean(string="Room availability",default=True)
-    room_rate = fields.Float( strinag="Mess Price",store=True)
+    room_rate = fields.Float( string="Room Price",store=True)
     mess_rate = fields.Float( string="Mess Price",store=True)
-    student_id = fields.Many2one("hostel.register")
     start_date = fields.Date(string="from")
     end_date = fields.Date(string="To")
-    states = fields.Selection([("pending","Pending"),("confirmed","Confirmed"),("rejected","Rejected")],string="Status",default="pending")
-    student_ids = fields.Many2many("hostel.register",domain="[('states','=','confirmed')]",required=True)
+    status = fields.Selection([("pending","Pending"),("confirmed","Confirmed"),("rejected","Rejected")],string="Status",default="pending")
+    student_ids = fields.Many2many("hostel.register",domain="[('status','=','confirmed')]",required=True)
     name = fields.Char("student_ids.name")
-
 
     @api.onchange("room_type", "count")
     def _check_count_with_room_type(self):

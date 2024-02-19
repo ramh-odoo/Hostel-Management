@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='action_hostel_staff' model='ir.actions.act_window'>
+        <field name='name'>Staff Management</field>
+        <field name='res_model'>hostel.staff</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+    <record id="view_hostel_staff_form" model="ir.ui.view">
+        <field name="name">hostel.staff.form</field>
+        <field name="model">hostel.staff</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title" col='1'>
+                    <h1 class="mb-2">
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <notebook>
+                    <page string="Personal Information">
+                        <group>
+                            <field name="email"/>
+                            <field name="address"/>
+                            <field name="city"/>
+                            <field name="state"/>
+                            <field name="contact"/>
+                            <field name="DOB"/>
+                            <field name="gender"/>
+                            <field name="marital_status"/>
+                        </group>
+                    </page>
+                    <page string="Salary Information">
+                        <group>
+                            <field name="monthly_salary"/>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="view_hostel_staff_tree" model="ir.ui.view">
+        <field name="name">hostel.staff.tree</field>
+        <field name="model">hostel.staff</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email" optional='hide'/>
+                <field name="contact"/>
+                <field name="gender"/>
+                <field name="marital_status" optional='hide'/>
+                <field name="monthly_salary" optional='hide'/>
+            </tree>
+        </field>
+    </record>
+    <record id='search_hostel_staff' model='ir.ui.view'>
+        <field name='name'>hostel.staff.search</field>
+        <field name='model'>hostel.staff</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="address"/>
+                <field name="city"/>
+                <field name="state"/>
+                <field name="contact"/>
+                <field name="DOB"/>
+                <field name="gender"/>
+                <field name="marital_status"/>
+                <filter string="State" name='state' context="{'group_by':'state'}"/>
+                <filter string="City" name='city' context="{'group_by':'city'}"/>
+                <filter string="Gender" name='gender' context="{'group_by':'gender'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>
