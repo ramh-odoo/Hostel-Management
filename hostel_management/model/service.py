@@ -3,15 +3,14 @@ from odoo import models,fields, api, _
 from odoo.exceptions import ValidationError
 
 class Prduct(models.Model):
-    _name = "hostel.product"
-    _description = "hostel.product"
+    _name = "hostel.service"
+    _description = "hostel.service"
 
-    name = fields.Char(string="Name of the product")
-    product_id = fields.Many2one('hostel.product')
-    count = fields.Float(string="count of item")
+    name = fields.Char(string="Service")
+    price = fields.Float(string="Price (per month)")
     sequence = fields.Char(string="Sequence",required=True,copy=False,readonly=True,default=lambda self: _("New"))
-    product_ids= fields.One2many('hostel.register', "product_id", "Student")
-
+    student_ids=fields.Many2many('hostel.register',string='Student')
+    active = fields.Boolean(default=True)
 
     @api.constrains("name")
     def _check_unique_field(self):

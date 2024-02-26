@@ -46,6 +46,14 @@
                         <field name='parent_contact'/>
                     </group>
                 </page>
+                <page string='Services'>
+                    <field name='service_ids'>
+                    <tree>
+                        <field name='name'/>
+                        <field name='price'/>
+                    </tree>
+                    </field>
+                </page>
             </notebook>
         </form>
     </field>

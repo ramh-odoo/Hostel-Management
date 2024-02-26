@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='action_hostel_service' model='ir.actions.act_window'>
+        <field name='name'>Hostel Service</field>
+        <field name='res_model'>hostel.service</field>
+        <field name='view_mode'>tree,form</field>
+        <!-- <field name='domain'>[('service_ids','in',"active_id")]</field> -->
+        <!-- <field name='context'>{'student_ids' : 'active_id'}</field> -->
+    </record>
+    <record id='hostel_product_view_form' model='ir.ui.view'>
+        <field name='name'>hostel.service.form</field>
+        <field name='model'>hostel.service</field>
+        <field name='arch' type='xml'>
+            <form >
+              <div class="oe_title">
+                <h1>
+                 <field name='name'/>
+                </h1>
+              </div>
+              <group>
+                <field name='price'/>
+              </group>
+              <notebook>
+                <page string='Students'>
+                    <field name='student_ids'><!-- domain="[('service_ids', 'in', active_id)]" -->
+                        <!-- <tree>
+                            <field name="name"/>
+                            <field name="email"/>
+                        </tree> -->
+                    </field>
+                </page>
+            </notebook>
+            </form>
+        </field>
+    </record>
+    <record id='hostel_product_view_tree' model='ir.ui.view'>
+        <field name='name'>hostel.service.tree</field>
+        <field name='model'>hostel.service</field>
+        <field name='arch' type='xml'>
+            <tree >    <!-- editable='bottom' open_form_view='True' -->
+            <field name='name'/>
+            <field name='price'/>
+            </tree>
+        </field>
+    </record>
+</odoo>

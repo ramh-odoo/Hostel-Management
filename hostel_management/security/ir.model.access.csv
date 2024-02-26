@@ -2,6 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hostel_register,access_hostel_register,model_hostel_register,base.group_user,1,1,1,1
 hostel_management.access_hostel_room,access_hostel_room,model_hostel_room,base.group_user,1,1,1,1
 hostel_management.access_hostel_contact,access_hostel_contact,hostel_management.model_hostel_contact,base.group_user,1,1,1,1
-hostel_management.access_hostel_product,access_hostel_product,hostel_management.model_hostel_product,base.group_user,1,1,1,1
-hostel_management.access_hostel_staff,access_hostel_staff,hostel_management.model_hostel_staff,base.group_user,1,1,1,1
-hostel_management.access_hostel_product,access_hostel_product,hostel_management.model_hostel_product,base.group_user,1,1,1,1
+hostel_management.access_hostel_staff,access_hostel_staff,model_hostel_staff,base.group_user,1,1,1,1
+hostel_management.access_hostel_service,access_hostel_service,model_hostel_service,base.group_user,1,1,1,1

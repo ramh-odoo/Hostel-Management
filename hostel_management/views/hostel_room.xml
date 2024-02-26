@@ -58,7 +58,7 @@
                 <field name="room_type"/>
                 <field name="room_ac" />
                 <field name="count" optional='hide'/>
-                <field name="availability"/>
+                <field name="availability" />
                 <field name="status" optional='hide'/>
                 <field name="student_ids" optional='hide' widget="many2many_tags" options="{'no_create': True}" />
                 <filter string="Available" name="availability" domain="[('availability', '=',True)]"/>

@@ -5,7 +5,7 @@
         <menuitem id="test_first_level_menu" name="Settings" >
             <menuitem id="room_action" action="action_hostel_room"/>
             <menuitem id="staff_action" action="action_hostel_staff"/>
-            <menuitem id="product_action" action="action_hostel_product"/>
+            <menuitem id="product_action" action="action_hostel_service"/>
         </menuitem>
     </menuitem>
 </odoo>
