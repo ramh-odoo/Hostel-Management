@@ -3,17 +3,28 @@
 <record id='action_hostel_register' model='ir.actions.act_window'>
     <field name='name'>Students</field>
     <field name='res_model'>hostel.register</field>
-    <field name='view_mode'>tree,form</field>
+    <field name='view_mode'>tree,form,graph,kanban,gantt</field>
 </record>
 <record id='hostel_register_view_form' model='ir.ui.view'>
     <field name='name'>hostel.register.view.form</field>
     <field name='model'>hostel.register</field>
     <field name='arch' type='xml'>
-        <form>
-            <div class='oe_title' col='1'>
-                <h1 class="mb-2">
-                    <field name="name"/>
-                </h1>
+        <form duplicate="False">
+            <header>
+                <button name='state_confirmed' type='object' string='Confirm' state='new, rejected, drafed' class='oe_highlight' invisible="status == 'confirmed'"/>
+                <button name='state_rejected' type='object' string='Reject' state='new, confirmed, drafed' invisible="status=='rejected'"/>
+                <field name='status' widget='statusbar' statusbar_visible='new,drafted, confirmed,'/>
+            </header>
+            <sheet>
+            <div class='row'>
+                <div class='col-8'>
+                    <h1 class="mb-2">
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <div class='col-4 mt-3'>
+                    <field name="image" widget='image'  class="oe_avatar"/>
+                </div>
             </div>
             <group >
                 <group col='2'>
@@ -23,6 +34,7 @@
                 <group col='2'>
                     <field name="date_of_birth"/>
                     <field name="gender"/>
+                    <field name="room_id" string="Room No"/>
                 </group>
                 <group>
                 </group>
@@ -55,14 +67,37 @@
                     </field>
                 </page>
             </notebook>
+        </sheet>
         </form>
+    </field>
+</record>
+<record id="view_hostel_register_kanban" model="ir.ui.view">
+    <field name="name">view.hostel.register.kanban</field>
+    <field name="model">hostel.register</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="year" records_draggable="1">
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_content">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="name"/></strong>
+                        </div>
+                        <div class="oe_kanban_details">
+                            <div>Course: <field name="course"/></div>
+                            <div>Semester: <field name="semester"/></div>
+                            <div>Contact: <field name="contact"/></div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
     </field>
 </record>
 <record id='hostel_register_view_tree' model='ir.ui.view'>
     <field name='name'>hostel.register.view.tree</field>
     <field name='model'>hostel.register</field>
     <field name='arch' type='xml'>
-        <tree>
+        <tree duplicate="False">
             <field name="name"/>
             <field name='email'/>
             <field name='contact' optional='show'/>
@@ -79,6 +114,38 @@
             <field name='father_name' optional='hide'/>
             <field name='parent_contact' optional='hide'/>
         </tree>
+    </field>
+</record>
+<record id="hostel_register_graph_view" model="ir.ui.view">
+    <field name="name">hostel.register.graph.view</field>
+    <field name="model">hostel.register</field>
+    <field name="arch" type="xml">
+        <graph >
+            <field name="gender"/>
+            <!-- <field name="city"/> -->
+            <field name='state'/>
+            <!-- <field name="course"/>
+            <field name="year"/>
+            <field name="semester"/>
+            <field name="status"/> -->
+        </graph>
+    </field>
+</record>
+<record id="hostel_register_gantt_view" model="ir.ui.view">
+    <field name="name">hostel.register.gantt.view</field>
+    <field name="model">hostel.register</field>
+    <field name="arch" type="xml">
+        <gantt date_start="start_date"
+            date_stop="end_date"
+            default_scale="month"
+            scales="day,week,month,year"
+            string="Student Gantt View"
+            color="semester"
+            decoration-info="status in ['confirmed']"
+            pill_label="True"
+            default_group_by="year,course">
+            <field name="status" />
+        </gantt>
     </field>
 </record>
 <record id='search_hostel_student' model='ir.ui.view'>

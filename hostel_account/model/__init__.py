@@ -1,3 +1,3 @@
 #-*- coding: utf-8 -*-
 
-from . import hostel_account
+from . import student_fees

@@ -11,25 +11,25 @@
         <field name='name'>hostel.service.form</field>
         <field name='model'>hostel.service</field>
         <field name='arch' type='xml'>
-            <form >
-              <div class="oe_title">
-                <h1>
-                 <field name='name'/>
-                </h1>
-              </div>
-              <group>
-                <field name='price'/>
-              </group>
-              <notebook>
-                <page string='Students'>
-                    <field name='student_ids'><!-- domain="[('service_ids', 'in', active_id)]" -->
-                        <!-- <tree>
+            <form duplicate="False">
+                <div class="oe_title">
+                    <h1>
+                        <field name='name' />
+                    </h1>
+                </div>
+                <group>
+                    <field name='price' />
+                </group>
+                <notebook>
+                    <page string='Students'>
+                        <field name='student_ids'><!-- domain="[('service_ids', 'in', active_id)]" -->
+                            <!-- <tree>
                             <field name="name"/>
                             <field name="email"/>
                         </tree> -->
-                    </field>
-                </page>
-            </notebook>
+                        </field>
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>
@@ -37,9 +37,9 @@
         <field name='name'>hostel.service.tree</field>
         <field name='model'>hostel.service</field>
         <field name='arch' type='xml'>
-            <tree >    <!-- editable='bottom' open_form_view='True' -->
-            <field name='name'/>
-            <field name='price'/>
+            <tree duplicate="False">    <!-- editable='bottom' open_form_view='True' -->
+                <field name='name' />
+                <field name='price' />
             </tree>
         </field>
     </record>

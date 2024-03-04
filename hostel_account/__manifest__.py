@@ -1,14 +1,13 @@
-#-- coding: utf-8 --
-#Part of Odoo. See LICENSE file for full copyright and licensing details.
+#-*- coding: utf-8 -*-
 
 {
     "name": "Hostel Account",
-    "description": "Account management for hostel management",
-    "summary": "Hostel Account system",
-    "category": "industry/real estate",
+    "description": "A module for hostel account",
+    "summary": "Hostel Account ",
+    "category" : "industry",
     "installable": True,
     "application": True,
     "license": "OEEL-1",
     "version": "1.0",
-    "depends": ["base", "hostel_management"],
+    "depends": ["base", "hostel_management", "account"],
 }

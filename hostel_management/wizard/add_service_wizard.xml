@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_add_service_wizard_form" model="ir.ui.view">
+        <field name="name">view.add.service.wizard.form</field>
+        <field name="model">hostel.add.service.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="service_ids"/>
+                    <!-- <field name="price"/> -->
+                </group>
+                <footer>
+                    <button string="Add Service" type="object" class="oe_highlight" name="add_service"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_add_offer_wizard" model="ir.actions.act_window">
+        <field name="name">Add Service</field>
+        <field name="res_model">hostel.add.service.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_add_service_wizard_form"/>
+        <field name="binding_model_id" ref="model_hostel_register"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

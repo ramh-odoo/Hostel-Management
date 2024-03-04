@@ -20,7 +20,7 @@ class HostelRooms(models.Model):
     start_date = fields.Date(string="from")
     end_date = fields.Date(string="To")
     status = fields.Selection([("pending","Pending"),("confirmed","Confirmed"),("rejected","Rejected")],string="Status",default="pending")
-    student_ids = fields.Many2many("hostel.register",required=True)
+    student_ids = fields.One2many("hostel.register",'room_id')
     name = fields.Char("student_ids.name")
 
     @api.depends('student_ids')
@@ -58,7 +58,8 @@ class HostelRooms(models.Model):
             if len(existing_records) > 1:
                 raise ValidationError("room number must be unique!")
 
-    # @api.model
-    # def create(self, vals):
-    #     vals['sequence_number'] = self.env['ir.sequence'].next_by_code('hostel.room')
-    #     return super(HostelRooms, self).create(vals)
+    @api.model
+    def decrease_count_for_student(self, student_id):
+        student = self.env['hostel.register'].browse(student_id)
+        if student.room_id:
+            student.room_id._compute_people_count()

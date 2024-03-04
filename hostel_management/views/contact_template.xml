@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="contact_form_template">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="oe_structure_content">
+                    <div class="container">
+                        <t t-name="your_module.contact_form">
+                            <form t-attf-action="/submit_contact_form" method="post">
+                                <div class="row gx-3 mb-3 mt-5">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name" class="form-label bold-label">Name</label>
+                                            <input type="text" class="form-control" name="name" required="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" name="phone" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" name="email" required="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="subject" class="form-label">Subject</label>
+                                            <input type="text" class="form-control" name="subject"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="question" class="form-label">Question</label>
+                                            <textarea class="form-control" name="question" rows="4" required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

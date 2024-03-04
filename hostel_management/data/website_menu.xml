@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="website_menu_Properties" model="website.menu">
+            <field name="name">Students</field>
+            <field name="url">/students</field>
+            <field name="parent_id" ref="website.main_menu"/>
+        </record>
+        <record id="website_menu_Properties2" model="website.menu">
+            <field name="name">Contact</field>
+            <field name="url">/contact</field>
+            <field name="parent_id" ref="website.main_menu"/>
+        </record>
+    </data>
+</odoo>

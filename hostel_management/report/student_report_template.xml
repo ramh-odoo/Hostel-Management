@@ -1,0 +1,82 @@
+<odoo>
+    <template id="student_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="student">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class=" mt-4">
+                            <h2 class="mb-4 text-center">
+                                <t t-if="student.image">
+                                    <img
+                                        t-att-src="'data:image/png;base64,' + student.image.decode('utf-8')"
+                                        class="img-thumbnail rounded-circle" alt="Student Image"
+                                        style="max-width: 300px;" />
+                                </t>
+                                <br />
+                                <t t-esc="student.name" />
+                            </h2>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Personal Information</h5>
+                                <strong>Expected Price: </strong>
+                                <span t-field="student.contact" />
+                                <strong>Status: </strong>
+                                <span t-field="student.parent_contact" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Contact Information</h5>
+                                        <dl>
+                                            <dt class="col-sm-2">Contact Number:</dt>
+                                            <dd class="col-sm-4">
+                                                <t t-esc="student.contact" />
+                                            </dd>
+                                            <dt class="col-sm-2">Parent Contact:</dt>
+                                            <dd class="col-sm-4">
+                                                <t t-esc="student.parent_contact" />
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Academic Information</h5>
+                                        <dl>
+                                            <dt class="col-sm-2">Course:</dt>
+                                            <dd class="col-sm-4">
+                                                <t t-esc="student.course" />
+                                            </dd>
+                                            <dt class="col-sm-2">Year:</dt>
+                                            <dd class="col-sm-4">
+                                                <t t-esc="student.year" />
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Room Information</h5>
+                                        <dl>
+                                            <dt class="col-sm-2">Room:</dt>
+                                            <dd class="col-sm-4">
+                                                <t t-esc="student.room_id.room_no" />
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
